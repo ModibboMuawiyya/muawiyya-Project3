@@ -14,10 +14,10 @@ commands:
           name: Destroy backend environment
           when: on_fail
           command: |
-            echo "Destroying environment: << parameters.circle_workflow_id >> "
-            aws s3 rm s3://udapeople-<< parameters.circle_workflow_id >> --recursive
-            aws cloudformation delete-stack --stack-name udapeople-backend-<< parameters.circle_workflow_id >>
-            aws cloudformation delete-stack --stack-name udapeople-frontend-<< parameters.circle_workflow_id >>
+            echo "Destroying environment: << parameters.circleci_workflow_id >> "
+            aws s3 rm s3://udapeople-<< parameters.circleci_workflow_id >> --recursive
+            aws cloudformation delete-stack --stack-name udapeople-backend-<< parameters.circleci_workflow_id >>
+            aws cloudformation delete-stack --stack-name udapeople-frontend-<< parameters.circleci_workflow_id >>
 
   revert-migrations:
     description: Revert the last migration if successfully run in the current workflow.
