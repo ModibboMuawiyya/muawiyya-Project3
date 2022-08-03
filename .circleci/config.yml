@@ -3,12 +3,12 @@ orbs:
   slack: circleci/slack@4.10.1
 
 commands:
-  destroy-environment:
+   destroy-environment:
     description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
     parameters:
-      workflow_id:
+      circle_workflow_id:
         type: string
-        # default: ${CIRCLECI_WORKFLOW_ID}  
+         
     steps:
       - run:
           name: Destroy backend environment
@@ -156,10 +156,8 @@ jobs:
 
   deploy-infrastructure:
     docker:
-      # Docker image here that supports AWS CLI
       - image: amazon/aws-cli
     steps:
-      # Checkout code from git
       - checkout
       - run: yum -y install tar gzip
       - run:
@@ -167,19 +165,18 @@ jobs:
           command: |
             aws cloudformation deploy \
               --template-file .circleci/files/backend.yml \
-              --tags project=udapeople \
-              --stack-name "udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}"" \
+              --stack-name "udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}" \
+              --tags project=Udapeople \
               --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"  
-              
+                                      
       - run:
           name: Ensure front-end infrastructure exist
           command: |
             aws cloudformation deploy \
               --template-file .circleci/files/frontend.yml \
-              --tags project=udapeople \
+              --tags project=Udapeople \
               --stack-name "udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}" \
               --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"  
-              
       - run:
           name: Add back-end ip to ansible inventory
           command: |
@@ -198,7 +195,7 @@ jobs:
             - project/.circleci/ansible/inventory.txt
             - env_vars.txt
       - destroy-environment:
-          workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
+          workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}" 
   #     # Here's where you will add some code to rollback on failure      
 
   # configure-infrastructure:
