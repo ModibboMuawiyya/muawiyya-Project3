@@ -8,7 +8,7 @@ commands:
     parameters:
       workflow_id:
         type: string
-        default  
+          
     steps:
       - run:
           name: Destroy environments
