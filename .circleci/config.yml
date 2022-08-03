@@ -8,7 +8,7 @@ commands:
     parameters:
       workflow_id:
         type: string
-          
+        # default: ${CIRCLECI_WORKFLOW_ID}  
     steps:
       - run:
           name: Destroy backend environment
@@ -198,7 +198,7 @@ jobs:
             - project/.circleci/ansible/inventory.txt
             - env_vars.txt
       - destroy-environment:
-          workflow_id: "${CIRCLECI_WORKFLOW_ID:0:7}"
+          workflow_id: ${CIRCLECI_WORKFLOW_ID:0:7}
   #     # Here's where you will add some code to rollback on failure      
 
   # configure-infrastructure:
