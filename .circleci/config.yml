@@ -121,7 +121,7 @@ jobs:
             exit 1
       - slack/notify:
           event: fail
-          trmplate: basic_fail_1
+          template: basic_fail_1
 
   scan-backend:
     docker:
