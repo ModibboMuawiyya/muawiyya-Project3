@@ -11,7 +11,7 @@ commands:
           
     steps:
       - run:
-          name: Destroy environments
+          name: Destroy backend environment
           when: on_fail
           command: |
             echo "Destroying environment: << parameters.circle_workflow_id >> "
@@ -185,7 +185,7 @@ jobs:
           command: |
             backend_ec2_public_ip=$(aws ec2 describe-instances \
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
-              --filters "Name=tag:aws:cloudformation:stack-name,Values=udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}" \
+              --filters "Name=tag:aws:cloudformation:stack-name,Values=udapeople-backend-${CIRCLECI_WORKFLOW_ID:0:7}" \
               --output text) 
             echo "$backend_ec2_public_ip"  
             echo "$backend_ec2_public_ip" >> ~/env_vars.txt
@@ -198,7 +198,7 @@ jobs:
             - project/.circleci/ansible/inventory.txt
             - env_vars.txt
       - destroy-environment:
-          circle_workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
+          circle_workflow_id: "${CIRCLECI_WORKFLOW_ID:0:7}"
   #     # Here's where you will add some code to rollback on failure      
 
   # configure-infrastructure:
