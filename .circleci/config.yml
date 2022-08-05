@@ -295,7 +295,7 @@ jobs:
           template: basic_success_1
       
       - destroy-environment:
-          workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}      
+          circle_workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}      
                     
   deploy-backend:
     docker:
@@ -333,7 +333,7 @@ jobs:
           event: pass
           template: basic_success_1
       - destroy-environment:
-          workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
+          circle_workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
       - revert-migrations: 
           circle_workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
       # Here's where you will add some code to rollback on failure  
