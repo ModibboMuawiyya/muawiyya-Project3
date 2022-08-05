@@ -248,9 +248,9 @@ jobs:
                   # If you are using kvdb.io, generate the bucket ID "7TMyDbFDi5b6WtB8av69xx" in your local terminal first
                   curl https://kvdb.io/7TMyDbFDi5b6WtB8av69xx/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
               fi
-      ## - save_cache:
-      #     paths: [backend/node_modules]
-      #     key: backend-build
+      - save_cache:
+          paths: [backend/node_modules]
+          key: backend-build
       - revert-migrations: 
           circle_workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"      
 
