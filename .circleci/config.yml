@@ -860,7 +860,9 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["75:1d:37:b9:b6:91:46:30:8f:d1:43:26:00:df:f3:2d"]
+          fingerprints: ["75:1d:37:b9:b6:91:46:30:8f:d1:43:26:00:df:f3:2d"]    
+      - restore_cache:
+          keys: [backend-build]  
       - attach_workspace:
           at: ~/
       - run:
