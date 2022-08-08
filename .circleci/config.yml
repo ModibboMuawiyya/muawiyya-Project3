@@ -381,7 +381,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            yup install -y npm nodejs tar gzip
+            yum install -y npm nodejs tar gzip
       - run:
           name: Update cloudfront distribution
           command: |
