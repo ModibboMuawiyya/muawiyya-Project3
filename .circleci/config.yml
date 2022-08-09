@@ -950,7 +950,7 @@ jobs:
       - run:
           name: Update Cloudfront Distribution
           command: |
-            export OldworkflowID = $(aws cloudformation list-exports \
+            export OldworkflowID=$(aws cloudformation list-exports \
             --query "Exports[?Name==\`WorkflowID\`].Value" \
             --no-paginate --output text)
 
@@ -1031,5 +1031,5 @@ workflows:
           requires: [deploy-backend, deploy-frontend]
       - cloudfront-update:
           requires: [smoke-test]
-      # - cleanup:
-      #     requires: [cloudfront-update]
+      - cleanup:
+          requires: [cloudfront-update]
