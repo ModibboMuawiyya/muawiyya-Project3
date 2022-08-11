@@ -1,0 +1,2 @@
+Public Url to github Repo [URL01]: https://github.com/ModibboMuawiyya/muawiyya-Project3
+Public Url for Public S3 Bucket [URL02]: http://udapeople-6db250c.s3-website-us-east-1.amazonaws.com
