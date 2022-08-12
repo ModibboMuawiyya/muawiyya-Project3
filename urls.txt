@@ -1,4 +1,5 @@
 Public Url to github Repo [URL01]: https://github.com/ModibboMuawiyya/muawiyya-Project3
 Public Url for Public S3 Bucket [URL02]: http://udapeople-05fdb41.s3-website-us-east-1.amazonaws.com/#/employees
+Cloudfront Distribution Domain Name : http://d1e1znbdpzatlx.cloudfront.net/#/employees
 
 Screenshots can be found in Instructions folder
